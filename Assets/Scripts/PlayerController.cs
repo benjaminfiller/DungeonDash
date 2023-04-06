@@ -26,10 +26,10 @@ public class PlayerController : MonoBehaviour
     {
         movement();
 
-        // fires a ray from the center of the player downwards 1.55 meters
+        // fires a ray from the center of the player downwards 1.15 meters
         // returns true if it hits something
         // returns False if it doesnt hit anything
-        if (Physics.Raycast(transform.position, Vector3.down, 1.55f))
+        if (Physics.Raycast(transform.position, Vector3.down, 1.15f))
         {
             isGrounded = true;
         }
