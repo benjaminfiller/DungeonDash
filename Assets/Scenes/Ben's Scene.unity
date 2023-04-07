@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 1664393316}
   - component: {fileID: 1664393315}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: TestPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
