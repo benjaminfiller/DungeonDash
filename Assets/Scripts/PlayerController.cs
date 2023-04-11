@@ -15,15 +15,10 @@ public class PlayerController : MonoBehaviour
     private bool jump = false;
     //a float value that controls how high the player jumps
     public float jumpForce;
-    // tracks how many coins the player has
-    public float coins = 0;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = transform.GetComponent<Rigidbody>();
-
-        // Hides the cursor
-        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -60,22 +55,6 @@ public class PlayerController : MonoBehaviour
             // sets jump to false after adding force so that jump does happen constantly
             jump = false;
         }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Laser"))
-        {
-
-        }
-        
-        // if a player runs into a coin, increment the coin count and disable the coin
-        if (other.CompareTag("Coin"))
-        {
-            coins++;
-            other.gameObject.SetActive(false);
-        }
-        
     }
 
     private void movement()
