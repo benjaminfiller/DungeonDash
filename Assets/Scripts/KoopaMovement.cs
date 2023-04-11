@@ -45,7 +45,7 @@ public class KoopaMovement : MonoBehaviour
             else
             {
                 // if the enemy is within bounds to move left, move left
-                transform.position += Vector3.up * speed * Time.deltaTime;
+                transform.position += Vector3.up * speed * 2 * Time.deltaTime;
             }
         }
         else
@@ -59,7 +59,7 @@ public class KoopaMovement : MonoBehaviour
             else
             {
                 // if the enemy is within bounds to move right, move right
-                transform.position += Vector3.down * speed * Time.deltaTime;
+                transform.position += Vector3.down * speed * 2 * Time.deltaTime;
             }
         }
     }
