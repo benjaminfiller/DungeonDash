@@ -57,6 +57,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {   
+        // if the player touches an enemy, take away one life
+        if (other.CompareTag("Enemy"))
+        {
+            lives--;
+        }
+
+        // increments the coin coint and disables the coin object
+        if (other.CompareTag("Coin"))
+        {
+            coins++;
+            other.gameObject.SetActive(false);
+        }
+
+    }
+
     private void FixedUpdate()
     {
         // rule of thumb - do physics manipulation in fixed update instead of update
