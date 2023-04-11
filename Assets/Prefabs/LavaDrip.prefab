@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5216834610664847623}
   m_Layer: 0
   m_Name: LavaDrip
-  m_TagString: StunLaser
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 1

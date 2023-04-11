@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        setInfoText();
         movement();
 
         // fires a ray from the center of the player downwards 1.15 meters
@@ -56,6 +57,14 @@ public class PlayerController : MonoBehaviour
             jump = true;
         }
     }
+
+    // updates the text displaying how many coins and lives the player has
+    void setInfoText()
+    {
+        coinText.text = "Coins: " + coins.ToString();
+        lifeText.text = "Lives: " + lives.ToString();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {   
