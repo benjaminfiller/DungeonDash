@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,10 +16,21 @@ public class PlayerController : MonoBehaviour
     private bool jump = false;
     //a float value that controls how high the player jumps
     public float jumpForce;
+    // tracks the number of coins the player has
+    public int coins = 0;
+    // tracks the lives the player has left
+    public int lives = 3;
+    // variable to display the coin total
+    public Text coinText;
+    // variable to display the lives
+    public Text lifeText;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = transform.GetComponent<Rigidbody>();
+        // Hides the cursor
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
