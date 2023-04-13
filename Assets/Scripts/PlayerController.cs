@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // variable to display the lives
     public Text lifeText;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OnPPress();
         setInfoText();
         movement();
 
@@ -65,6 +67,24 @@ public class PlayerController : MonoBehaviour
         lifeText.text = "Lives: " + lives.ToString();
     }
 
+    // hides or shows the mouse when the P key is pressed
+    private void OnPPress()
+    {
+        if (Input.GetKey(KeyCode.P))
+        {
+            // hides the cursor if the cursor is visible
+            if (Cursor.visible == true)
+            {
+                // Hides the cursor
+                Cursor.visible = false;
+            }
+            else
+            {
+                // Makes the cursor visible
+                Cursor.visible = true;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {   
