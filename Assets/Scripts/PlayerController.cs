@@ -82,6 +82,13 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    private void slide()
+    {
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            
+        }
+    }
 
     private void FixedUpdate()
     {
