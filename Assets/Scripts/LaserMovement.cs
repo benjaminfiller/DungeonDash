@@ -22,7 +22,7 @@ public class LaserMovement : MonoBehaviour
     {
         for (int index = 0; index < 1; index++)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(3 / 2);
 
         }
         Destroy(this.gameObject);
