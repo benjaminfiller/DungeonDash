@@ -46,8 +46,15 @@ public class CameraController : MonoBehaviour
 
         character.transform.localRotation = Quaternion.AngleAxis(mouseLook.x, character.transform.up);
 
-
-
+        // disables turning with the mouse when the menu is visible
+        if (Cursor.visible == true)
+        {
+            sensitivity = 0f;
+        }
+        else
+        {
+            sensitivity = 5f;
+        }
 
 
     }
