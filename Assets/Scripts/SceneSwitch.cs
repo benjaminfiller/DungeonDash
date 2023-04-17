@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
-    // player gameobject
-    public GameObject player;
     // variable to handle what scene player goes to next
     public int newSceneIndex;
 
@@ -26,23 +24,5 @@ public class SceneSwitch : MonoBehaviour
     {
         // will load the build index that we set newSceneIndex to in Unity
         SceneManager.LoadScene(newSceneIndex);
-    }
-    private void Awake()
-    {
-        //array of player objects
-        GameObject[] playerobjects = GameObject.FindGameObjectsWithTag(player.tag);
-        // if array returns larger than 1 there is more than 1 player
-        if (playerobjects.Length > 1)
-        {
-            //destroy player in assigned scene
-            Destroy(player);
-
-        }
-        else
-        {
-            // dont want to destroy the following:
-            // player
-            DontDestroyOnLoad(player);
-        }
     }
 }
