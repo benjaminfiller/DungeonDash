@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     //a float value that controls how high the player jumps
     public float jumpForce;
     // tracks the number of coins the player has
-    public int coins = 0;
+    // public int coins = 0;
     // tracks the lives the player has left
     public int lives = 3;
     // tracks the number of keys the player has
@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     public GameObject Menu;
     // bool to check if the player can slide or not
     public bool boost;
+
+    // stores the number of coins collected throughout scenes
+    [SerializeField]
+    private FloatSO coinsSO;
 
 
     // Start is called before the first frame update
@@ -69,12 +73,11 @@ public class PlayerController : MonoBehaviour
         }
 
         // if the player presses down the space bar then jump
-        // if the player is sliding or getting out of a slid, they cannot jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             jump = true;
         }
-
+        // if the player is on the ground 
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGrounded)
         {
             boost = true;
@@ -84,7 +87,7 @@ public class PlayerController : MonoBehaviour
     // updates the text displaying how many coins and lives the player has
     void setInfoText()
     {
-        coinText.text = "Coins: " + coins.ToString();
+        coinText.text = "Coins: " + coinsSO.Value;
         lifeText.text = "Lives: " + lives.ToString();
     }
 
@@ -128,7 +131,7 @@ public class PlayerController : MonoBehaviour
         // increments the coin coint and disables the coin object
         if (other.CompareTag("Coin"))
         {
-            coins++;
+            coinsSO.Value += 1;
             other.gameObject.SetActive(false);
             Debug.Log("Picked up a coin");
         }
@@ -194,19 +197,28 @@ public class PlayerController : MonoBehaviour
         // if they player dies, the game over screen players 
         if (lives <= 0)
         {
-            Cursor.visible = true;
-            Menu.gameObject.SetActive(true);
-            outcomeText.text = "Better luck next time :(\nYour score was: " + coins.ToString();
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
+            outcomeText.text = "Better luck next time :(";
+            gameEnd();
         }
-        if (coins == 2)
+        if (coinsSO.Value == 2)
         {
-            Cursor.visible = true;
-            Menu.gameObject.SetActive(true);
-            outcomeText.text = "You win!\nYour score was: " + coins.ToString();
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
+            outcomeText.text = "You win!";
+            gameEnd();
         }
+    }
+    // brings up the end screen and enables the mouse
+    private void gameEnd()
+    {
+        // sets the cursor and menu to active and unlocks the mouse
+        Cursor.visible = true;
+        Menu.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        // freezes the game
+        Time.timeScale = 0;
+        // resets the coinValue
+        coinsSO.Value = 0;
+        // gets rid of the coinText and lifeText
+        coinText.text = "";
+        lifeText.text = "";
     }
 }
