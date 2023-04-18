@@ -1,27 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// [Brough, Heath]
+// [4/3/2023]
+// Camera controller script
 public class CameraController : MonoBehaviour
 {
     Vector2 mouseLook;
-
     Vector2 smoothV;
-
+    // how sensitive the camera is
     public float sensitivity = 5.0f;
 
     public float smoothing = 2.0f;
-
-
-
     GameObject character;
-
-
-
-
-
     void Start()
-
     {
         // applies the rotation of the camera to the parent object
         character = this.transform.parent.gameObject;
