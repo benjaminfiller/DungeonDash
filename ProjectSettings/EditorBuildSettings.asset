@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Ben's Scene 1.unity
     guid: 9bb43da13ab348b489ae63721e85b60e
   - enabled: 1
-    path: Assets/Scenes/Ben's Test Scene.unity
+    path: Assets/Scenes/Level2.unity
     guid: c41640531564e1748b4627ad662b9c62
   m_configObjects: {}
