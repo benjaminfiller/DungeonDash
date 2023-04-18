@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneSwitch : MonoBehaviour
 {
     // variable to handle what scene player goes to next
-    public int newSceneIndex;
 
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +25,7 @@ public class SceneSwitch : MonoBehaviour
         // if the current scene is the first scene
 
             // loads the second scene (index 1)
-            SceneManager.LoadScene(newSceneIndex);
+            SceneManager.LoadScene(1);
     }
     
 }
