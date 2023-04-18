@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public Text lifeText;
     // variable to display text in the pause menu
     public Text outcomeText;
+    // text to display the keys the player holds
+    public Text keyText;
     // game object holding the pause panel
     public GameObject Menu;
 
@@ -91,6 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         coinText.text = "Coins: " + coinsSO.Value;
         lifeText.text = "Lives: " + lives.ToString();
+        keyText.text = "Keys: " + keys.ToString();
     }
 
     // hides or shows the mouse when the P key is pressed
