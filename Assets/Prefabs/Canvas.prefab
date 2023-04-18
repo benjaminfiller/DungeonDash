@@ -1368,7 +1368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: -44}
+  m_AnchoredPosition: {x: 113, y: -44}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7624015206634977375
@@ -1412,12 +1412,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Welcome to Dungeon Dash!
-
-    Use W, A, S, D to move around
-
-    Press
-    space to jump and shift to Dash forwards'
+  m_Text: Jump over and around enemies to collect coins and keys as you progress
+    through the dungeon!
 --- !u!1 &8355803832028772888
 GameObject:
   m_ObjectHideFlags: 0

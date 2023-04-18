@@ -50,8 +50,6 @@ public class PlayerController : MonoBehaviour
         // hides the menu on start
         Menu.SetActive(false);
         rigidbody = transform.GetComponent<Rigidbody>();
-        // Hides the cursor
-        Cursor.visible = false;
         outcomeText.text = "Leaving Already?";
         Menu.gameObject.SetActive(false);
     }
