@@ -16,24 +16,17 @@ public class SceneSwitch : MonoBehaviour
         {
             // switch the scene or end the game
             // send the player object through to call the gameEnd function
-            switchScene(other);
+            switchScene();
         }
     }
-    public void switchScene(Collider other)
+    public void switchScene()
     {
         // will load the build index that we set newSceneIndex to in Unity
         
         // if the current scene is the first scene
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
+
             // loads the second scene (index 1)
             SceneManager.LoadScene(newSceneIndex);
-        }
-        else
-        {
-            // ends the game if the player hits the exit in the second scene
-            other.gameObject.GetComponent<PlayerController>().gameEnd(true);
-        }
     }
     
 }

@@ -216,8 +216,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1495772474381013190}
-        m_TargetAssemblyTypeName: RestartFunction, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: StartMenuBehavior, Assembly-CSharp
+        m_MethodName: gameStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
