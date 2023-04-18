@@ -9,20 +9,31 @@ public class SceneSwitch : MonoBehaviour
     public int newSceneIndex;
 
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        // if the player touches the portal
+        if (other.gameObject.CompareTag("Player"))
+        {
+            // switch the scene or end the game
+            // send the player object through to call the gameEnd function
+            switchScene(other);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void switchScene()
+    public void switchScene(Collider other)
     {
         // will load the build index that we set newSceneIndex to in Unity
-        SceneManager.LoadScene(newSceneIndex);
+        
+        // if the current scene is the first scene
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            // loads the second scene (index 1)
+            SceneManager.LoadScene(newSceneIndex);
+        }
+        else
+        {
+            // ends the game if the player hits the exit in the second scene
+            other.gameObject.GetComponent<PlayerController>().gameEnd(true);
+        }
     }
+    
 }

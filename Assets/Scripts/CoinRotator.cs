@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// [Brough, Heath]
+// [4/15/2023]
+// rotates the coin
 public class CoinRotator : MonoBehaviour
 {
     // how fast the coin rotates

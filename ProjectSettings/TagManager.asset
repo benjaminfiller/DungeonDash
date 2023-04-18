@@ -9,6 +9,9 @@ TagManager:
   - Menu
   - Coin
   - Key
+  - Exit
+  - Door
+  - End
   layers:
   - Default
   - TransparentFX

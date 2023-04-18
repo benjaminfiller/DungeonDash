@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// [Brough, Heath]
+// [4/3/2023]
+// controls all the functions of the player
 public class PlayerController : MonoBehaviour
 {
-
-    // controls how fast the player moves
-    public float moveSpeed;
     // the rigidbody component
     Rigidbody rigidbody;
-    // if the player is grounded they can jump
-    public bool isGrounded = false;
-    // bool variable that tells fixed update when to jump
-    private bool jump = false;
+    // controls how fast the player moves
+    public float moveSpeed;
+    
     //a float value that controls how high the player jumps
     public float jumpForce;
     // tracks the number of coins the player has
@@ -22,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
     // tracks the number of keys the player has
     public int keys = 0;
+
     // variable to display the coin total
     public Text coinText;
     // variable to display the lives
@@ -30,9 +30,15 @@ public class PlayerController : MonoBehaviour
     public Text outcomeText;
     // game object holding the pause panel
     public GameObject Menu;
+
+    // if the player is grounded they can jump
+    public bool isGrounded = false;
+    // bool variable that tells fixed update when to jump
+    private bool jump = false;
     // bool to check if the player can slide or not
     public bool boost;
-
+    // stores if the player is invincible or not
+    private bool isInvincible;
     // stores the number of coins collected throughout scenes
     [SerializeField]
     private FloatSO coinsSO;
@@ -41,8 +47,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        // unfreezes time after restarting the game
-        Time.timeScale = 1;
         // hides the menu on start
         Menu.SetActive(false);
         rigidbody = transform.GetComponent<Rigidbody>();
@@ -55,7 +59,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        endCondition();
+        checkLives();
         OnPPress();
         setInfoText();
         movement();
@@ -122,10 +126,11 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {   
         // if the player touches an enemy, take away one life
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && !isInvincible)
         {
             lives--;
             Debug.Log("touched an enemy");
+            StartCoroutine(invincibility());
         }
 
         // increments the coin coint and disables the coin object
@@ -141,6 +146,21 @@ public class PlayerController : MonoBehaviour
             keys++;
             other.gameObject.SetActive(false);
             Debug.Log("Picked up a key");
+        }
+        if (other.CompareTag("Door"))
+        {
+            Debug.Log("Ran into a door");
+            if (other.GetComponent<DoorOpener>().locks <= keys)
+            {
+                keys -= other.GetComponent<DoorOpener>().locks;
+                other.GetComponent<DoorOpener>().goDown();
+                Debug.Log("Opened a door");
+                Debug.Log(keys + " keys left");
+            }
+        }
+        if (other.CompareTag("End"))
+        {
+            gameEnd(true);
         }
 
     }
@@ -191,23 +211,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // looks for two end conditions of the game and changes the ending screen accordingly
-    private void endCondition()
+    // checks if the player has died
+    private void checkLives()
     {
         // if they player dies, the game over screen players 
         if (lives <= 0)
         {
             outcomeText.text = "Better luck next time :(";
-            gameEnd();
-        }
-        if (coinsSO.Value == 2)
-        {
-            outcomeText.text = "You win!";
-            gameEnd();
+            // brings up the menu and ends the game
+            gameEnd(false);
         }
     }
     // brings up the end screen and enables the mouse
-    private void gameEnd()
+    public void gameEnd(bool win)
     {
         // sets the cursor and menu to active and unlocks the mouse
         Cursor.visible = true;
@@ -220,5 +236,21 @@ public class PlayerController : MonoBehaviour
         // gets rid of the coinText and lifeText
         coinText.text = "";
         lifeText.text = "";
+        if (win)
+        {
+            outcomeText.text = "You Won!";
+        }
+    }
+
+    private IEnumerator invincibility()
+    {
+        // when the script gets to tis line, the coroutine will wait for 1 second
+        // before continuing
+        // EX: yield return new WaitForSeconds(1);
+        isInvincible = true;
+        Debug.Log("Player is invincible");
+        yield return new WaitForSeconds(2f);
+        isInvincible = false;
+        Debug.Log("Player is not invincible");
     }
 }
