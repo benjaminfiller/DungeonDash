@@ -692,6 +692,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser_spawner_prefab: {fileID: 3386309686311893708, guid: f6be5909e177bb64aa68becac02efa0d, type: 3}
+--- !u!114 &1183503876 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5162430795161050505, guid: 2b17572b45787184b94de5f40cd7ddf0, type: 3}
+  m_PrefabInstance: {fileID: 6133005853811483893}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1209166900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -928,6 +939,7 @@ MonoBehaviour:
   coinText: {fileID: 1156824438}
   lifeText: {fileID: 1934947889}
   outcomeText: {fileID: 602779705}
+  keyText: {fileID: 1183503876}
   Menu: {fileID: 452172624}
   isGrounded: 1
   boost: 0
